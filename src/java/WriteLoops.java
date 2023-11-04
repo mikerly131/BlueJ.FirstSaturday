@@ -14,10 +14,12 @@ public class WriteLoops {
 
     public int oneToFive() {
         int w = 0;
-
-        // Write a FOR loop that counts from 1 to 10.
+        // (ERROR: Replace 10 with 5 to make method true to itself)
+        //  Write a FOR loop that counts from 1 to 10.
             // calling
-            w = w + 1;
+            for (int i = 0; i < 5; i++) {
+                w = w + 1;
+            }
             // each time through the loop
 
         // this will tell the test how many times the loop executed.
@@ -29,7 +31,9 @@ public class WriteLoops {
 
         // Write a FOR loop that counts from 1 to 10.
         // calling
-        w = w + 1;
+        for (int i = 0; i < 10; i++) {
+            w = w + 1;
+        }
         // each time through the loop
         
         return w;
@@ -40,7 +44,9 @@ public class WriteLoops {
 
         // Write a FOR loop that makes 10 iterations, start at 21.
         // calling
-        w = w + 1;
+        for (int i = 21; i > 10; i--) {
+            w = w + 1;
+        }
         // each time through the loop
         
         return w;
@@ -51,7 +57,9 @@ public class WriteLoops {
 
         // Write a FOR loop that counts down from 100 to 0.
         // calling
-        w = w + 1;
+        for (int i = 100; i > 0; i--) {
+            w = w + 1;
+        }
         // each time through the loop
         
         return w;
@@ -62,7 +70,10 @@ public class WriteLoops {
 
         // Write a FOR loop from 0 to 32 by 2s.
         // calling
-        w = w + 1;
+        for (int i = 0; i < 33; i = i + 2) {
+            w = w + 1;
+        }
+
         // each time through the loop
         return w;
     }
@@ -71,8 +82,12 @@ public class WriteLoops {
         int w = 0;
 
         // Write a FOR loop from 1 to less than 5001 by 11s.
+        for (int i = 5001; i > 0; i = i - 11) {
+            w = w + 1;
+        }
+
         // calling
-        w = w + 1;
+
         // each time through the loop
         
         return w;
@@ -82,10 +97,14 @@ public class WriteLoops {
         int w = 0;
 
         // Write a nested FOR loop(s), where one counts from
-        // 0 to less than 20 and the inner one counts from 0 to 4
-                // calling
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 5; j++) {
                 w = w + 1;
-                // each time through the inner loop
+            }
+        }
+
+        // 0 to less than 20 and the inner one counts from 0 to 4
+
 
         return w;
     }
@@ -97,10 +116,14 @@ public class WriteLoops {
         // statement inside the loop that checks the
         // loop index counter and if it’s greater than 51,
         // prints “Hello Zipcode” instead of the statement w = w + 1;
-
-                // calling
+        for (int i = 5; i < 106; i++) {
+            if (i > 51) {
+                System.out.print("Hello Zipcode");
+            } else {
                 w = w + 1;
-            // each time through the inner loop
+            }
+
+        }
         
         return w;
     }
@@ -130,11 +153,13 @@ public class WriteLoops {
         int w = 0;
 
         // you need to use a .equals for two Strings.
-
-            // calling
-            w = w + 1;
-            // each time through the inner loop
-        
+            while (gpsCurrentLocation().equals("Not Home")) {
+                // calling
+                driveSomeMore();
+                w = w + 1;
+                // each time through the inner loop
+            }
+            System.out.print("Honey, I'm Home!");
 
             return w;
     }
@@ -145,36 +170,45 @@ public class WriteLoops {
     // is less than “highestScore” and if it is, adds “currentScore” to
     // "runningScore"
     // and then sets “currentScore” to “gameNextScore()”
-    public int checkGameScore() {
+
+    // Warning: type error in supplied method or its test.
+    // Change type to int to boolean & change w to w >= 3,
+    // or change the test to expect int
+    public boolean checkGameScore() {
         int w = 0;
         int highestScore = 236;
         int currentScore = gameNextScore();
         int runningScore = 0;
 
         // do your while loop here
- 
-            // calling
+        while (runningScore < highestScore) {
+            runningScore = runningScore + currentScore;
+            currentScore = gameNextScore();
             w = w + 1;
+        }
             // each time through the inner loop
         
-        return w; // >= 3;
+        return w >= 3;
     }
 
     // Rewrite the previous WHILE loop as a DO..WHILE loop.
     // Notice how the “runningScore” variable usage is different.
+
+    // Why would it be different?
     public boolean checkGameScoreDoWhile() {
         int w = 0;
         int highestScore = 236;
         int currentScore = gameNextScore();
         int runningScore = 0;
 
-        // do your while loop here
-
-            // calling
+        do {
+            runningScore = runningScore + currentScore;
+            currentScore = gameNextScore();
             w = w + 1;
-            // each time through the inner loop
+        } while (runningScore < highestScore);
 
-        return w >= 3;
+
+        return w >= 4;
     }
 
     // Write a WHILE loop that checks “serverIsRunning()” and if true
@@ -182,14 +216,19 @@ public class WriteLoops {
     // is false, and if so, call “sendEmergencyText(“Help!”, adminPhoneNumber)”
     // and also calls “tryServerRestart()”
     public int checkServerStatus() {
+
         int w = 0;
         String adminPhoneNumber = "+1 202 456 1111";
-        
 
         // calling
-        w = w + 1;
-        // each time through the inner loop
-        
+        while (serverIsRunning()) {
+                waitFor(5);
+                if (!serverIsRunning()) {
+                    sendEmergencyText("Help!", adminPhoneNumber);
+                    tryServerRestart();
+                }
+            w = w + 1;
+        }
         return w;
     }
 
@@ -391,7 +430,7 @@ public class WriteLoops {
     private void sendEmergencyText(String mesg, String phone) {
     }
 
-    private void tryServerRestart(String mesg, String phone) {
+    private void tryServerRestart() {
     }
 
     int serverStatus = 5;
